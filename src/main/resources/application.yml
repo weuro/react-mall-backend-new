@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://rm-cn-em93o3kwu00069ro.rwlb.rds.aliyuncs.com:3306/hmall
+    username: fengxi
+    password: Asdf#1476
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
