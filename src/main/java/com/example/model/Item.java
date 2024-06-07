@@ -16,11 +16,11 @@ public class Item implements Serializable {
     private String brand;
     private String spec;
     private Integer sold;
-    private Integer commentCount;
+    private Integer comment_count;
     private Boolean isAD;
     private Integer status;
-    private Timestamp createTime;
-    private Timestamp updateTime;
+    private Timestamp create_time;
+    private Timestamp update_time;
     private Long creater;
     private Long updater;
 }
