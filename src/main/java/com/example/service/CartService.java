@@ -8,4 +8,8 @@ public interface CartService {
     ResponseResult createCart(CartReceive cartReceive);
 
     ResponseResult updateCart(CartReceive cartReceive);
+
+    ResponseResult listCart(Long user_id);
+
+    ResponseResult deleteCart(Long id);
 }

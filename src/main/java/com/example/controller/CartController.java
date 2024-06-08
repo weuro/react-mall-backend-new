@@ -21,4 +21,14 @@ public class CartController {
     public ResponseResult updateCart(@RequestBody CartReceive cartReceive) {
         return cartService.updateCart(cartReceive);
     }
+
+    @GetMapping("/api/cart/list")
+    public ResponseResult listCart(@RequestParam Long user_id) {
+        return cartService.listCart(user_id);
+    }
+
+    @GetMapping("/api/cart/delete")
+    public ResponseResult deleteCart(@RequestParam Long id) {
+        return cartService.deleteCart(id);
+    }
 }

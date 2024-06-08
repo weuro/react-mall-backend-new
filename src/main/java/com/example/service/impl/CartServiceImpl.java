@@ -10,6 +10,8 @@ import com.example.service.CartService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CartServiceImpl implements CartService {
     @Resource
@@ -19,6 +21,15 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public ResponseResult createCart(CartReceive cartReceive) {
+        Cart cartExist = cartMapper.selectCartById(cartReceive.getUser_id(), cartReceive.getItem_id());
+
+        if (cartExist != null) {
+            cartReceive.setId(cartExist.getId())
+                    .setNum(cartExist.getNum() + cartReceive.getNum());
+
+            return updateCart(cartReceive);
+        }
+
         Item item = itemMapper.selectItemById(cartReceive.getItem_id());
 
         Cart cart = new Cart()
@@ -42,6 +53,28 @@ public class CartServiceImpl implements CartService {
     @Override
     public ResponseResult updateCart(CartReceive cartReceive) {
         int res = cartMapper.updateCartById(cartReceive.getNum(), cartReceive.getId());
+
+        if (res == 1) {
+            return new ResponseResult(200, "success", null);
+        } else {
+            return new ResponseResult(500, "failed", null);
+        }
+    }
+
+    @Override
+    public ResponseResult listCart(Long user_id) {
+        List<Cart> carts = cartMapper.selectCartByUserId(user_id);
+
+        if (carts != null) {
+            return new ResponseResult(200, "success", carts);
+        }
+
+        return new ResponseResult(500, "failed", null);
+    }
+
+    @Override
+    public ResponseResult deleteCart(Long id) {
+        int res = cartMapper.deleteCartById(id);
 
         if (res == 1) {
             return new ResponseResult(200, "success", null);
