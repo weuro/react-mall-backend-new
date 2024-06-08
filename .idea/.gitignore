@@ -7,6 +7,6 @@
 /dataSources/
 /dataSources.local.xml
 # 忽略所有的 Maven 编译文件
-/target
+/target/
 # 忽略日志文件
 *.log
