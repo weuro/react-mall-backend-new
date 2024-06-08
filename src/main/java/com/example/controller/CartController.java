@@ -16,6 +16,7 @@ public class CartController {
         return cartService.createCart(cartReceive);
     }
 
+    // 修改购物车中的商品数量
     @PostMapping("/api/cart/update")
     public ResponseResult updateCart(@RequestBody CartReceive cartReceive) {
         return cartService.updateCart(cartReceive);
