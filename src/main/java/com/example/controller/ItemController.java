@@ -21,4 +21,32 @@ public class ItemController {
     public ResponseResult getDetail(@RequestParam Long id) {
         return itemService.getDetail(id);
     }
+
+    @GetMapping("/api/item/category")
+    public ResponseResult getItemsByCategory(@RequestParam String category) {
+        return itemService.getItemsByCategory(category);
+    }
+
+    @GetMapping("/api/item/categoryCounts")
+    public ResponseResult getCategoryCounts() {
+        return itemService.getCategoryCounts();
+    }
+
+    @GetMapping("/api/item/category/filter")
+    public ResponseResult getItemsByCategoryAndFilters(
+            @RequestParam String category,
+            @RequestParam(required = false) Integer minPrice,
+            @RequestParam(required = false) Integer maxPrice,
+            @RequestParam(required = false) String brand) {
+        return itemService.getItemsByCategoryAndFilters(category, minPrice, maxPrice, brand);
+    }
+
+    @GetMapping("/api/item/filter")
+    public ResponseResult getItemsByFilters(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer minPrice,
+            @RequestParam(required = false) Integer maxPrice,
+            @RequestParam(required = false) String brand) {
+        return itemService.getItemsByFilters(name, minPrice, maxPrice, brand);
+    }
 }
