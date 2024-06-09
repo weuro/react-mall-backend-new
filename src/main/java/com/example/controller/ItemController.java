@@ -34,21 +34,25 @@ public class ItemController {
         return itemService.getCategoryCounts();
     }
 
-    @GetMapping("/api/item/category/filter")
-    public ResponseResult getItemsByCategoryAndFilters(
-            @RequestParam String category,
-            @RequestParam(required = false) Integer minPrice,
-            @RequestParam(required = false) Integer maxPrice,
-            @RequestParam(required = false) String brand) {
-        return itemService.getItemsByCategoryAndFilters(category, minPrice, maxPrice, brand);
+    @PostMapping("/api/item/category/filter")
+    public ResponseResult getItemsByCategoryAndFilters(@RequestBody Map<String, Object> map) {
+        String category = (String) map.get("category");
+        Integer minPrice = (Integer) map.get("minPrice");
+        Integer maxPrice = (Integer) map.get("maxPrice");
+        String brand = (String) map.get("brand");
+        int page = (int) map.getOrDefault("page", 1);
+        int size = (int) map.getOrDefault("size", 20);
+        return itemService.getItemsByCategoryAndFilters(category, minPrice, maxPrice, brand, page, size);
     }
 
-    @GetMapping("/api/item/filter")
-    public ResponseResult getItemsByFilters(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Integer minPrice,
-            @RequestParam(required = false) Integer maxPrice,
-            @RequestParam(required = false) String brand) {
-        return itemService.getItemsByFilters(name, minPrice, maxPrice, brand);
+    @PostMapping("/api/item/filter")
+    public ResponseResult getItemsByFilters(@RequestBody Map<String, Object> map) {
+        String name = (String) map.get("name");
+        Integer minPrice = (Integer) map.get("minPrice");
+        Integer maxPrice = (Integer) map.get("maxPrice");
+        String brand = (String) map.get("brand");
+        int page = (int) map.getOrDefault("page", 1);
+        int size = (int) map.getOrDefault("size", 20);
+        return itemService.getItemsByFilters(name, minPrice, maxPrice, brand, page, size);
     }
 }

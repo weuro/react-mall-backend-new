@@ -33,25 +33,31 @@ public interface ItemMapper {
 
     // 动态SQL
     @Select("<script>" +
-            "SELECT * FROM item WHERE category = #{category}" +
+            "SELECT id, name, price, stock, image, brand FROM item WHERE category = #{category}" +
             "<if test='minPrice != null'> AND price &gt;= #{minPrice}</if>" +
             "<if test='maxPrice != null'> AND price &lt;= #{maxPrice}</if>" +
-            "<if test='brand != null'> AND brand = #{brand}</if>" +
+            "<if test='brand != null'> AND brand LIKE CONCAT('%', #{brand}, '%')</if>" +
+            "LIMIT #{limit} OFFSET #{offset}" +
             "</script>")
-    List<ItemSend> selectItemsByCategoryAndFilters(@Param("category") String category,
-                                                   @Param("minPrice") Integer minPrice,
-                                                   @Param("maxPrice") Integer maxPrice,
-                                                   @Param("brand") String brand);
+    List<ItemResponse> selectItemsByCategoryAndFilters(@Param("category") String category,
+                                                       @Param("minPrice") Integer minPrice,
+                                                       @Param("maxPrice") Integer maxPrice,
+                                                       @Param("brand") String brand,
+                                                       @Param("limit") int limit,
+                                                       @Param("offset") int offset);
 
     @Select("<script>" +
-            "SELECT * FROM item WHERE 1=1" +
+            "SELECT id, name, price, stock, image, brand FROM item WHERE 1=1" +
             "<if test='name != null'> AND name LIKE CONCAT('%', #{name}, '%')</if>" +
             "<if test='minPrice != null'> AND price &gt;= #{minPrice}</if>" +
             "<if test='maxPrice != null'> AND price &lt;= #{maxPrice}</if>" +
             "<if test='brand != null'> AND brand LIKE CONCAT('%', #{brand}, '%')</if>" +
+            "LIMIT #{limit} OFFSET #{offset}" +
             "</script>")
-    List<ItemSend> selectItemsByFilters(@Param("name") String name,
-                                        @Param("minPrice") Integer minPrice,
-                                        @Param("maxPrice") Integer maxPrice,
-                                        @Param("brand") String brand);
+    List<ItemResponse> selectItemsByFilters(@Param("name") String name,
+                                            @Param("minPrice") Integer minPrice,
+                                            @Param("maxPrice") Integer maxPrice,
+                                            @Param("brand") String brand,
+                                            @Param("limit") int limit,
+                                            @Param("offset") int offset);
 }

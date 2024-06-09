@@ -48,14 +48,18 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ResponseResult getItemsByCategoryAndFilters(String category, Integer minPrice, Integer maxPrice, String brand) {
-        List<ItemSend> itemSends = itemMapper.selectItemsByCategoryAndFilters(category, minPrice, maxPrice, brand);
-        return new ResponseResult(200, "查询成功", itemSends);
+    public ResponseResult getItemsByCategoryAndFilters(String category, Integer minPrice, Integer maxPrice, String brand, int page, int size) {
+        int offset = (page - 1) * size;
+        List<ItemResponse> itemResponses = itemMapper.selectItemsByCategoryAndFilters(category, minPrice, maxPrice, brand, size, offset);
+        LogUtil.log(itemResponses.size() + "");
+        return new ResponseResult(200, "查询成功", itemResponses);
     }
 
     @Override
-    public ResponseResult getItemsByFilters(String name, Integer minPrice, Integer maxPrice, String brand) {
-        List<ItemSend> itemSends = itemMapper.selectItemsByFilters(name, minPrice, maxPrice, brand);
-        return new ResponseResult(200, "查询成功", itemSends);
+    public ResponseResult getItemsByFilters(String name, Integer minPrice, Integer maxPrice, String brand, int page, int size) {
+        int offset = (page - 1) * size;
+        List<ItemResponse> itemResponses = itemMapper.selectItemsByFilters(name, minPrice, maxPrice, brand, size, offset);
+        LogUtil.log(itemResponses.size() + "");
+        return new ResponseResult(200, "查询成功", itemResponses);
     }
 }

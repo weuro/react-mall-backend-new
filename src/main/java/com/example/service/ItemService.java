@@ -11,7 +11,6 @@ public interface ItemService {
 
     ResponseResult getCategoryCounts();
 
-    ResponseResult getItemsByCategoryAndFilters(String category, Integer minPrice, Integer maxPrice, String brand);
-
-    ResponseResult getItemsByFilters(String name, Integer minPrice, Integer maxPrice, String brand);
+    ResponseResult getItemsByCategoryAndFilters(String category, Integer minPrice, Integer maxPrice, String brand, int page, int size);
+    ResponseResult getItemsByFilters(String name, Integer minPrice, Integer maxPrice, String brand, int page, int size);
 }
