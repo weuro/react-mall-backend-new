@@ -1,8 +1,10 @@
 package com.example.controller;
 
+import com.example.dto.CartDelete;
 import com.example.dto.CartReceive;
 import com.example.dto.ResponseResult;
 import com.example.service.CartService;
+import com.example.util.LogUtil;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,5 +32,11 @@ public class CartController {
     @GetMapping("/api/cart/delete")
     public ResponseResult deleteCart(@RequestParam Long id) {
         return cartService.deleteCart(id);
+    }
+
+    @PostMapping("/api/cart/deleteAll")
+    public ResponseResult deleteAllCart(@RequestBody CartDelete cartDelete) {
+        LogUtil.log("cartDelete: " + cartDelete);
+        return cartService.deleteAllCart(cartDelete);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.CartDelete;
 import com.example.dto.CartReceive;
 import com.example.dto.ResponseResult;
 import com.example.mapper.CartMapper;
@@ -11,6 +12,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -77,6 +79,23 @@ public class CartServiceImpl implements CartService {
         int res = cartMapper.deleteCartById(id);
 
         if (res == 1) {
+            return new ResponseResult(200, "success", null);
+        } else {
+            return new ResponseResult(500, "failed", null);
+        }
+    }
+
+    @Override
+    public ResponseResult deleteAllCart(CartDelete cartDelete) {
+        List<Long> ids = cartDelete.getIds();
+
+        if (Objects.isNull(ids) || ids.isEmpty()) {
+            return new ResponseResult(500, "failed", null);
+        }
+
+        int res = cartMapper.deleteAllCartByIds(ids);
+
+        if (res == ids.size()) {
             return new ResponseResult(200, "success", null);
         } else {
             return new ResponseResult(500, "failed", null);

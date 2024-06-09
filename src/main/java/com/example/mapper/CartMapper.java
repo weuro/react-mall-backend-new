@@ -22,4 +22,6 @@ public interface CartMapper {
 
     @Delete("DELETE FROM cart WHERE id = #{id}")
     int deleteCartById(Long id);
+
+    int deleteAllCartByIds(List<Long> ids);
 }
