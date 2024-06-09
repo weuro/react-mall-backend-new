@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import com.example.dto.CategoryCount;
+import com.example.dto.ItemResponse;
 import com.example.dto.ItemSend;
 import com.example.dto.ResponseResult;
 import com.example.mapper.ItemMapper;
@@ -33,9 +34,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseResult getItemsByCategory(String category) {
-        List<ItemSend> itemSends = itemMapper.selectItemsByCategory(category);
-        LogUtil.log(itemSends.size() + "");
-        return new ResponseResult(200, "查询成功", itemSends);
+        List<ItemResponse> itemResponses = itemMapper.selectItemsByCategory(category);
+        LogUtil.log(itemResponses.size() + "");
+        return new ResponseResult(200, "查询成功", itemResponses);
     }
 
     @Override

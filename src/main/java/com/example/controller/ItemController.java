@@ -23,8 +23,8 @@ public class ItemController {
     }
 
     @PostMapping("/api/item")
-    public ResponseResult getItemsByCategory(@RequestBody Map map) {
-        String category = (String) map.get("name");
+    public ResponseResult getItemsByCategory(@RequestBody Map<String, String> map) {
+        String category = map.get("category");
         return itemService.getItemsByCategory(category);
     }
 

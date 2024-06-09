@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.dto.CategoryCount;
+import com.example.dto.ItemResponse;
 import com.example.dto.ItemSend;
 import com.example.model.Item;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,8 +22,9 @@ public interface ItemMapper {
     List<ItemSend> selectRandomItems();
 
     // 根据类别查询
-    @Select("SELECT * FROM item WHERE category = #{category}")
-    List<ItemSend> selectItemsByCategory(String category);
+
+    @Select("SELECT id, name, price, stock, image, brand FROM item WHERE category = #{category}")
+    List<ItemResponse> selectItemsByCategory(@Param("category") String category);
 
     // 获得类别和对应数量
     @Select("SELECT category, COUNT(*) as count FROM item GROUP BY category")
