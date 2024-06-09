@@ -1,0 +1,32 @@
+2024-06-09T05:50:36.508+08:00  INFO 6500 --- [main] com.example.ReactMallBackedApplication   : Starting ReactMallBackedApplication using Java 17.0.11 with PID 6500 (D:\大三下（2024春）\轻量化平台开发\第四次作业\react-mall-backend-new\target\classes started by Lenovo in D:\大三下（2024春）\轻量化平台开发\第四次作业\react-mall-backend-new)
+2024-06-09T05:50:36.511+08:00  INFO 6500 --- [main] com.example.ReactMallBackedApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-09T05:50:37.560+08:00  INFO 6500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-06-09T05:50:37.571+08:00  INFO 6500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-09T05:50:37.571+08:00  INFO 6500 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-09T05:50:37.645+08:00  INFO 6500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-09T05:50:37.646+08:00  INFO 6500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1097 ms
+2024-06-09T05:50:38.250+08:00  INFO 6500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-06-09T05:50:38.259+08:00  INFO 6500 --- [main] com.example.ReactMallBackedApplication   : Started ReactMallBackedApplication in 2.343 seconds (process running for 3.682)
+2024-06-09T05:52:23.221+08:00  INFO 6500 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-09T05:52:23.222+08:00  INFO 6500 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T05:52:23.224+08:00  INFO 6500 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-09T05:52:23.373+08:00  INFO 6500 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-09T05:52:23.906+08:00  INFO 6500 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4b3f3ea9
+2024-06-09T05:52:23.911+08:00  INFO 6500 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-09T07:42:09.839+08:00  INFO 6500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-09T07:42:09.843+08:00  INFO 6500 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-09T07:42:16.418+08:00  INFO 30700 --- [main] com.example.ReactMallBackedApplication   : Starting ReactMallBackedApplication using Java 17.0.11 with PID 30700 (D:\大三下（2024春）\轻量化平台开发\第四次作业\react-mall-backend-new\target\classes started by Lenovo in D:\大三下（2024春）\轻量化平台开发\第四次作业\react-mall-backend-new)
+2024-06-09T07:42:16.421+08:00  INFO 30700 --- [main] com.example.ReactMallBackedApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-09T07:42:17.754+08:00  INFO 30700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-06-09T07:42:17.776+08:00  INFO 30700 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-09T07:42:17.776+08:00  INFO 30700 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-09T07:42:17.925+08:00  INFO 30700 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-09T07:42:17.926+08:00  INFO 30700 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1466 ms
+2024-06-09T07:42:18.641+08:00  INFO 30700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-06-09T07:42:18.650+08:00  INFO 30700 --- [main] com.example.ReactMallBackedApplication   : Started ReactMallBackedApplication in 2.733 seconds (process running for 3.336)
+2024-06-09T07:52:41.186+08:00  INFO 30700 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-09T07:52:41.190+08:00  INFO 30700 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T07:52:41.196+08:00  INFO 30700 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-09T07:52:41.510+08:00  INFO 30700 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-09T07:52:42.018+08:00  INFO 30700 --- [http-nio-8081-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@634d620a
+2024-06-09T07:52:42.023+08:00  INFO 30700 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.

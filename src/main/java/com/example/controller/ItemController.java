@@ -3,9 +3,9 @@ package com.example.controller;
 import com.example.dto.ResponseResult;
 import com.example.service.ItemService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 public class ItemController {
@@ -22,8 +22,9 @@ public class ItemController {
         return itemService.getDetail(id);
     }
 
-    @GetMapping("/api/item/category")
-    public ResponseResult getItemsByCategory(@RequestParam String category) {
+    @PostMapping("/api/item")
+    public ResponseResult getItemsByCategory(@RequestBody Map map) {
+        String category = (String) map.get("name");
         return itemService.getItemsByCategory(category);
     }
 
