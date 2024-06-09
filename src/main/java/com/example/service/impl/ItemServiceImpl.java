@@ -33,8 +33,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ResponseResult getItemsByCategory(String category) {
-        List<ItemResponse> itemResponses = itemMapper.selectItemsByCategory(category);
+    public ResponseResult getItemsByCategory(String category, int page, int size) {
+        int offset = (page - 1) * size;
+        List<ItemResponse> itemResponses = itemMapper.selectItemsByCategoryWithPagination(category, size, offset);
         LogUtil.log(itemResponses.size() + "");
         return new ResponseResult(200, "查询成功", itemResponses);
     }

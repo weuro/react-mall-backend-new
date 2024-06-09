@@ -22,9 +22,10 @@ public interface ItemMapper {
     List<ItemSend> selectRandomItems();
 
     // 根据类别查询
-
-    @Select("SELECT id, name, price, stock, image, brand FROM item WHERE category = #{category}")
-    List<ItemResponse> selectItemsByCategory(@Param("category") String category);
+    @Select("SELECT id, name, price, stock, image, brand FROM item WHERE category = #{category} LIMIT #{limit} OFFSET #{offset}")
+    List<ItemResponse> selectItemsByCategoryWithPagination(@Param("category") String category,
+                                                           @Param("limit") int limit,
+                                                           @Param("offset") int offset);
 
     // 获得类别和对应数量
     @Select("SELECT category, COUNT(*) as count FROM item GROUP BY category")

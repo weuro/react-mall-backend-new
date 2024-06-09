@@ -7,7 +7,7 @@ public interface ItemService {
 
     ResponseResult getDetail(Long id);
 
-    ResponseResult getItemsByCategory(String category);
+    ResponseResult getItemsByCategory(String category, int page, int size);
 
     ResponseResult getCategoryCounts();
 

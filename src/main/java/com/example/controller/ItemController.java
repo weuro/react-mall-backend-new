@@ -23,11 +23,12 @@ public class ItemController {
     }
 
     @PostMapping("/api/item")
-    public ResponseResult getItemsByCategory(@RequestBody Map<String, String> map) {
-        String category = map.get("category");
-        return itemService.getItemsByCategory(category);
+    public ResponseResult getItemsByCategory(@RequestBody Map<String, Object> map,
+                                             @RequestParam(defaultValue = "1") int page,
+                                             @RequestParam(defaultValue = "20") int size) {
+        String category = (String) map.get("category");
+        return itemService.getItemsByCategory(category, page, size);
     }
-
     @GetMapping("/api/item/categoryCounts")
     public ResponseResult getCategoryCounts() {
         return itemService.getCategoryCounts();
