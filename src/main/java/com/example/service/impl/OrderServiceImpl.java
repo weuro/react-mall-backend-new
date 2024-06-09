@@ -12,6 +12,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Service
@@ -58,6 +59,8 @@ public class OrderServiceImpl implements OrderService {
         if (res2 != carts.size()) {
             return new ResponseResult(400, "订单详情创建失败");
         }
-        return new ResponseResult(200, "订单创建成功");
+
+        Map<String, Long> data = Map.of("order_id", id);
+        return new ResponseResult(200, "订单创建成功", data);
     }
 }
