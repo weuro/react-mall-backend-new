@@ -15,4 +15,6 @@ public interface CartService {
     ResponseResult deleteCart(Long id);
 
     ResponseResult deleteAllCart(CartDelete cartDelete);
+
+    ResponseResult findCart(CartDelete cartDelete);
 }

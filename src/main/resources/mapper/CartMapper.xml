@@ -9,4 +9,11 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="findCartByIds" resultType="com.example.model.Cart">
+        SELECT * FROM cart WHERE id IN
+        <foreach item="id" collection="ids" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

@@ -40,7 +40,7 @@ public class CartServiceImpl implements CartService {
                 .setNum(cartReceive.getNum())
                 .setName(item.getName())
                 .setSpec(item.getSpec())
-                .setPrice(item.getPrice())
+                .setPrice(item.getPrice() * cartReceive.getNum())
                 .setImage(item.getImage());
 
         int res = cartMapper.insertCart(cart);
@@ -100,5 +100,21 @@ public class CartServiceImpl implements CartService {
         } else {
             return new ResponseResult(500, "failed", null);
         }
+    }
+
+    @Override
+    public ResponseResult findCart(CartDelete cartDelete) {
+        List<Long> ids = cartDelete.getIds();
+
+        if (Objects.isNull(ids) || ids.isEmpty()) {
+            return new ResponseResult(500, "failed", null);
+        }
+
+        List<Cart> carts = cartMapper.findCartByIds(ids);
+
+        if (carts != null) {
+            return new ResponseResult(200, "success", carts);
+        }
+        return  new ResponseResult(500, "failed", null);
     }
 }

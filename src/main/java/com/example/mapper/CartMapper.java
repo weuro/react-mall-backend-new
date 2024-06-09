@@ -24,4 +24,6 @@ public interface CartMapper {
     int deleteCartById(Long id);
 
     int deleteAllCartByIds(List<Long> ids);
+
+    List<Cart> findCartByIds(List<Long> ids);
 }

@@ -39,4 +39,9 @@ public class CartController {
         LogUtil.log("cartDelete: " + cartDelete);
         return cartService.deleteAllCart(cartDelete);
     }
+
+    @PostMapping("/api/cart/find")
+    public ResponseResult findCart(@RequestBody CartDelete cartDelete) {
+        return cartService.findCart(cartDelete);
+    }
 }
