@@ -15,6 +15,30 @@ public class AddressServiceImpl implements AddressService {
     private AddressMapper addressMapper;
 
     @Override
+    public ResponseResult addAddress(Address address) {
+        addressMapper.insertAddress(address);
+        return new ResponseResult(200, "地址添加成功", address);
+    }
+
+    @Override
+    public ResponseResult updateAddress(Address address) {
+        addressMapper.updateAddress(address);
+        return new ResponseResult(200, "地址更新成功", address);
+    }
+
+    @Override
+    public ResponseResult deleteAddress(Long id, Long userId) {
+        addressMapper.deleteAddress(id, userId);
+        return new ResponseResult(200, "地址删除成功");
+    }
+
+    @Override
+    public ResponseResult getAddressesByUserId(Long userId) {
+        List<Address> addresses = addressMapper.selectAddressesByUserId(userId);
+        return new ResponseResult(200, "查询成功", addresses);
+    }
+
+    @Override
     public ResponseResult getAddress(Long userId) {
         List<Address> addresses = addressMapper.getAddress(userId);
 
@@ -24,3 +48,4 @@ public class AddressServiceImpl implements AddressService {
         return new ResponseResult(400, "failed", null);
     }
 }
+
