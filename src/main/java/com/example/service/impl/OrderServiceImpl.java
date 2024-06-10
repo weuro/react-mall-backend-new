@@ -213,4 +213,9 @@ public class OrderServiceImpl implements OrderService {
         return updatedRows > 0;
     }
 
+    @Override
+    public List<Order> getOrdersByUserId(Long userId) {
+        return orderMapper.selectOrdersByUserId(userId);
+    }
+
 }

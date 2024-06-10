@@ -28,4 +28,7 @@ public interface OrderMapper {
     @Update("UPDATE `order` SET status = 3 WHERE id = #{id} AND status = 2")
     int shipOrder(Long id);
 
+    @Select("SELECT * FROM `order` WHERE user_id = #{userId}")
+    List<Order> selectOrdersByUserId(Long userId);
+
 }

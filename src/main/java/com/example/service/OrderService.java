@@ -24,4 +24,6 @@ public interface OrderService {
 
     boolean shipOrder(Long id);
 
+    List<Order> getOrdersByUserId(Long userId);
+
 }

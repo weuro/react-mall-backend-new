@@ -56,4 +56,10 @@ public class OrderController {
         }
     }
 
+    @GetMapping("/api/order/user")
+    public ResponseResult<List<Order>> getOrdersByUserId(@RequestParam Long userId) {
+        List<Order> orders = orderService.getOrdersByUserId(userId);
+        return new ResponseResult<>(200, orders);
+    }
+
 }
