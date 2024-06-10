@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface OrderMapper {
 
@@ -19,4 +21,8 @@ public interface OrderMapper {
 
     @Update("UPDATE `order` SET status = #{status} WHERE id = #{id}")
     int updateOrderStatus(Long id, int status);
+
+    @Select("SELECT * FROM `order`")
+    List<Order> selectAllOrders();
+
 }

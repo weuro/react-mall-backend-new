@@ -4,9 +4,12 @@ import com.example.dto.CartReceive;
 import com.example.dto.OrderCreate;
 import com.example.dto.OrderPush;
 import com.example.dto.ResponseResult;
+import com.example.model.Order;
 import com.example.service.OrderService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class OrderController {
@@ -37,4 +40,10 @@ public class OrderController {
     public ResponseResult upPayOrder(@RequestParam Long id) {
         return orderService.upPayOrder(id);
     }
+
+    @GetMapping("/api/order/all")
+    public List<Order> getAllOrders() {
+        return orderService.getAllOrders();
+    }
+
 }

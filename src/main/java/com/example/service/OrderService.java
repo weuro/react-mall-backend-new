@@ -4,6 +4,9 @@ import com.example.dto.CartReceive;
 import com.example.dto.OrderCreate;
 import com.example.dto.OrderPush;
 import com.example.dto.ResponseResult;
+import com.example.model.Order;
+
+import java.util.List;
 
 public interface OrderService {
 
@@ -16,4 +19,7 @@ public interface OrderService {
     ResponseResult upPayOrder(Long id);
 
     ResponseResult pushOrder(OrderPush orderPush);
+
+    List<Order> getAllOrders();
+
 }
