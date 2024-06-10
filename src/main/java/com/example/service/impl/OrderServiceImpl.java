@@ -242,4 +242,21 @@ public class OrderServiceImpl implements OrderService {
         return new ResponseResult(200, "取消订单成功");
     }
 
+    @Override
+    public boolean shipOrder(Long id) {
+        int updatedRows = orderMapper.shipOrder(id);
+        return updatedRows > 0;
+    }
+
+    @Override
+    public List<Order> getOrdersByUserId(Long userId) {
+        return orderMapper.selectOrdersByUserId(userId);
+    }
+
+    @Override
+    public boolean deleteOrder(Long id) {
+        int deletedRows = orderMapper.deleteOrder(id);
+        return deletedRows > 0;
+    }
+
 }

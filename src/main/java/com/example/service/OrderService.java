@@ -22,6 +22,13 @@ public interface OrderService {
 
     List<Order> getAllOrders();
 
+
     ResponseResult cancelOrder(Long id);
+
+    boolean shipOrder(Long id);
+
+    List<Order> getOrdersByUserId(Long userId);
+
+    boolean deleteOrder(Long id);
 
 }

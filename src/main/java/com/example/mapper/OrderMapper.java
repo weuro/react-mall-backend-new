@@ -1,10 +1,7 @@
 package com.example.mapper;
 
 import com.example.model.Order;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -24,5 +21,14 @@ public interface OrderMapper {
 
     @Select("SELECT * FROM `order`")
     List<Order> selectAllOrders();
+
+    @Update("UPDATE `order` SET status = 3 WHERE id = #{id} AND status = 2")
+    int shipOrder(Long id);
+
+    @Select("SELECT * FROM `order` WHERE user_id = #{userId}")
+    List<Order> selectOrdersByUserId(Long userId);
+
+    @Delete("DELETE FROM `order` WHERE id = #{id}")
+    int deleteOrder(Long id);
 
 }

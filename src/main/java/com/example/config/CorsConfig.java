@@ -11,7 +11,7 @@ public class CorsConfig implements WebMvcConfigurer {
      @Override
      public void addCorsMappings(CorsRegistry registry) {
          registry.addMapping("/**") // 允许所有请求路径
-                 .allowedOrigins("http://localhost:8080") // 允许该域名的跨域请求
+                 .allowedOrigins("http://localhost:8080", "http://localhost:3000") // 允许该域名的跨域请求
 //                 .allowedOriginPatterns("*") // 允许所有域名的跨域请求
                  .allowedMethods("GET", "POST", "PUT", "DELETE") // 允许GET、POST、PUT、DELETE请求
                  .allowedHeaders("*") // 允许所有请求头
