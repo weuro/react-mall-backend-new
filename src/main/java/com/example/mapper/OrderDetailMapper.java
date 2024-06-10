@@ -20,4 +20,8 @@ public interface OrderDetailMapper {
     @Insert("insert into order_detail (order_id, item_id, num, name, spec, price, image)" +
             " values (#{orderDetail.order_id}, #{orderDetail.item_id}, #{orderDetail.num}, #{orderDetail.name}, #{orderDetail.spec}, #{orderDetail.price}, #{orderDetail.image})")
     int insertOrderDetailByOrderDetail(@Param("orderDetail") OrderDetail orderDetail);
+
+    @Select("SELECT * FROM order_detail WHERE order_id = #{orderId}")
+    List<OrderDetail> selectOrderDetailsByOrderId(Long orderId);
+    
 }

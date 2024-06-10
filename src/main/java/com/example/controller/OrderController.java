@@ -1,9 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.CartReceive;
-import com.example.dto.OrderCreate;
-import com.example.dto.OrderPush;
-import com.example.dto.ResponseResult;
+import com.example.dto.*;
 import com.example.model.Order;
 import com.example.service.OrderService;
 import jakarta.annotation.Resource;
@@ -75,6 +72,12 @@ public class OrderController {
             return new ResponseResult<>(400, "Order deletion failed. The order might not exist.");
         }
 
+    }
+
+    @GetMapping("/api/order/user/ordersWithDetails")
+    public ResponseResult<List<OrderDTO>> getOrdersWithDetailsByUserId(@RequestParam Long userId) {
+        List<OrderDTO> orders = orderService.getOrdersWithDetailsByUserId(userId);
+        return new ResponseResult<>(200, orders);
     }
 
 }

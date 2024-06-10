@@ -1,9 +1,6 @@
 package com.example.service.impl;
 
-import com.example.dto.CartReceive;
-import com.example.dto.OrderCreate;
-import com.example.dto.OrderPush;
-import com.example.dto.ResponseResult;
+import com.example.dto.*;
 import com.example.mapper.*;
 import com.example.model.*;
 import com.example.service.OrderService;
@@ -259,4 +256,8 @@ public class OrderServiceImpl implements OrderService {
         return deletedRows > 0;
     }
 
+    @Override
+    public List<OrderDTO> getOrdersWithDetailsByUserId(Long userId) {
+        return orderMapper.selectOrdersWithDetailsByUserId(userId);
+    }
 }
