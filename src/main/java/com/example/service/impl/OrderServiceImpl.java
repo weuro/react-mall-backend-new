@@ -156,4 +156,10 @@ public class OrderServiceImpl implements OrderService {
         }
         return new ResponseResult(400, "处理失败");
     }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderMapper.selectAllOrders();
+    }
+
 }

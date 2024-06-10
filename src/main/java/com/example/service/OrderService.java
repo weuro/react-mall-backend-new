@@ -2,6 +2,9 @@ package com.example.service;
 
 import com.example.dto.OrderCreate;
 import com.example.dto.ResponseResult;
+import com.example.model.Order;
+
+import java.util.List;
 
 public interface OrderService {
 
@@ -12,4 +15,7 @@ public interface OrderService {
     ResponseResult payOrder(OrderCreate orderCreate);
 
     ResponseResult upPayOrder(Long id);
+
+    List<Order> getAllOrders();
+
 }

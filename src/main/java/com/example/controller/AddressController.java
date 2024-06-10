@@ -36,5 +36,11 @@ public class AddressController {
     public ResponseResult getAddress(@RequestParam Long userId) {
         return addressService.getAddress(userId);
     }
+
+    @PutMapping("/setDefault")
+    public void setDefaultAddress(@RequestParam Long userId, @RequestParam Long addressId) {
+        addressService.setDefaultAddress(userId, addressId);
+    }
+
 }
 

@@ -26,5 +26,10 @@ public interface AddressMapper {
     @Select("SELECT * FROM address WHERE userId = #{userId}")
     List<Address> getAddress(Long userId);
 
+    @Update("UPDATE address SET isDefault = '0' WHERE userId = #{userId}")
+    void resetDefaultAddress(@Param("userId") Long userId);
+
+    @Update("UPDATE address SET isDefault = '1' WHERE id = #{id} AND userId = #{userId}")
+    void setDefaultAddress(@Param("id") Long id, @Param("userId") Long userId);
 }
 
