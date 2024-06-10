@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
                 .setAddress_id(orderCreate.getAddress_id())
                 .setPayment_type(003)
                 .setUser_id(carts.get(0).getUser_id())
-                .setStatus(0);
+                .setStatus(1);
 
         int res = orderMapper.insertOrder(order);
 
@@ -89,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ResponseResult payOrder(Long id) {
-        int res = orderMapper.updateOrderStatus(id, 1);
+        int res = orderMapper.updateOrderStatus(id, 2);
 
         if (res == 1) {
             return new ResponseResult(200, "支付成功");
@@ -99,7 +99,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ResponseResult upPayOrder(Long id) {
-        int res = orderMapper.updateOrderStatus(id, 2);
+        int res = orderMapper.updateOrderStatus(id, 5);
 
         if (res == 1) {
             return new ResponseResult(200, "超时未支付");
