@@ -47,6 +47,7 @@ public class OrderController {
     public ResponseResult cancelOrder(@RequestParam Long id) {
         return orderService.cancelOrder(id);
     }
+
     @PutMapping("/api/order/ship")
     public String shipOrder(@RequestParam Long id) {
         boolean success = orderService.shipOrder(id);
