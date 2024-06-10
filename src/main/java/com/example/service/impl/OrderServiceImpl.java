@@ -162,4 +162,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectAllOrders();
     }
 
+    @Override
+    public boolean shipOrder(Long id) {
+        int updatedRows = orderMapper.shipOrder(id);
+        return updatedRows > 0;
+    }
+
 }

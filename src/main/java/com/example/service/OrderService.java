@@ -18,4 +18,6 @@ public interface OrderService {
 
     List<Order> getAllOrders();
 
+    boolean shipOrder(Long id);
+
 }

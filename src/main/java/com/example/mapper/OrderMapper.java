@@ -25,4 +25,7 @@ public interface OrderMapper {
     @Select("SELECT * FROM `order`")
     List<Order> selectAllOrders();
 
+    @Update("UPDATE `order` SET status = 3 WHERE id = #{id} AND status = 2")
+    int shipOrder(Long id);
+
 }

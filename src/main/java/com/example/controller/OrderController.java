@@ -39,4 +39,14 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
+    @PutMapping("/api/order/ship")
+    public String shipOrder(@RequestParam Long id) {
+        boolean success = orderService.shipOrder(id);
+        if (success) {
+            return "Order shipped successfully.";
+        } else {
+            return "Order shipping failed. The order might not be in the correct status.";
+        }
+    }
+
 }
