@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import com.example.dto.CartReceive;
 import com.example.dto.OrderCreate;
+import com.example.dto.OrderPush;
 import com.example.dto.ResponseResult;
 import com.example.model.Order;
 import com.example.service.OrderService;
@@ -17,6 +19,11 @@ public class OrderController {
     @PostMapping("/api/order/create")
     public ResponseResult createOrder(@RequestBody OrderCreate orderCreate) {
         return orderService.createOrder(orderCreate);
+    }
+
+    @PostMapping("/api/order/push")
+    public ResponseResult pushOrder(@RequestBody OrderPush orderPush) {
+        return orderService.pushOrder(orderPush);
     }
 
     @GetMapping("/api/order/getbyid")

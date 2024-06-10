@@ -12,6 +12,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -46,7 +47,7 @@ public class CartServiceImpl implements CartService {
         int res = cartMapper.insertCart(cart);
 
         if (res == 1) {
-            return new ResponseResult(200, "success", null);
+            return new ResponseResult(200, "success");
         } else {
             return new ResponseResult(500, "failed", null);
         }
