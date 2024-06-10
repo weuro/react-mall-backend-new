@@ -9,13 +9,13 @@ import java.sql.Timestamp;
 public class OrderDetail implements Serializable {
 
     private Long id;
-    private Long orderId;
-    private Long itemId;
+    private Long order_id;
+    private Long item_id;
     private Integer num;
     private String name;
     private String spec;
     private Integer price;
     private String image;
-    private Timestamp createTime;
-    private Timestamp updateTime;
+    private Timestamp create_time;
+    private Timestamp update_time;
 }

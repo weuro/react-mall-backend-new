@@ -7,12 +7,13 @@ import com.example.model.Item;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
 @Mapper
 public interface ItemMapper {
-    @Select("SELECT * FROM item WHERE id = #{id}")
+    @Select("SELECT * FROM item WHERE id = #{id} FOR UPDATE")
     Item selectItemById(Long id);
 //
 //    @Select("SELECT COUNT(*) FROM item")
@@ -60,4 +61,7 @@ public interface ItemMapper {
                                             @Param("brand") String brand,
                                             @Param("limit") int limit,
                                             @Param("offset") int offset);
+
+    @Update("UPDATE item SET stock = stock - #{num} WHERE id = #{id}")
+    int updateItemStock(@Param("id") Long id, @Param("num") int num);
 }

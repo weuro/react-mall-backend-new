@@ -1,6 +1,8 @@
 package com.example;
 
+import com.example.mapper.ItemMapper;
 import com.example.mapper.OrderMapper;
+import com.example.model.Item;
 import com.example.model.Order;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,8 @@ import java.util.UUID;
 class ReactMallBackedApplicationTests {
     @Resource
     private OrderMapper orderMapper;
+    @Resource
+    private ItemMapper itemMapper;
 
     @Test
     void contextLoads() {
@@ -32,6 +36,13 @@ class ReactMallBackedApplicationTests {
                 .setStatus(0);
 
         int res = orderMapper.insertOrder(order);
+        System.out.println(res);
+    }
+
+    @Test
+    void updateItemStock() {
+        Item item = itemMapper.selectItemById(317578L);
+        int res = itemMapper.updateItemStock(item.getId(), item.getStock() - 1);
         System.out.println(res);
     }
 

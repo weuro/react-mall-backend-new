@@ -21,9 +21,9 @@ public class OrderController {
         return orderService.getOrderById(id);
     }
 
-    @GetMapping("/api/order/pay")
-    public ResponseResult payOrder(@RequestParam Long id) {
-        return orderService.payOrder(id);
+    @PostMapping("/api/order/pay")
+    public ResponseResult payOrder(@RequestBody OrderCreate orderCreate) {
+        return orderService.payOrder(orderCreate);
     }
 
     @GetMapping("/api/order/un-pay")

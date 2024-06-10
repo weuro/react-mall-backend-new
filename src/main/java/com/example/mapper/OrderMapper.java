@@ -14,7 +14,7 @@ public interface OrderMapper {
             "VALUES (#{id}, #{total_fee}, #{payment_type}, #{user_id}, #{status}, #{address_id})")
     int insertOrder(Order order);
 
-    @Select("SELECT * FROM `order` WHERE id = #{id}")
+    @Select("SELECT * FROM `order` WHERE id = #{id} FOR UPDATE")
     Order selectOrderById(Long id);
 
     @Update("UPDATE `order` SET status = #{status} WHERE id = #{id}")

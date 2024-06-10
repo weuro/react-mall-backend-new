@@ -2,17 +2,15 @@ package com.example.service.impl;
 
 import com.example.dto.OrderCreate;
 import com.example.dto.ResponseResult;
-import com.example.mapper.CartMapper;
-import com.example.mapper.ItemMapper;
-import com.example.mapper.OrderDetailMapper;
-import com.example.mapper.OrderMapper;
-import com.example.model.Cart;
-import com.example.model.Item;
-import com.example.model.Order;
+import com.example.mapper.*;
+import com.example.model.*;
 import com.example.service.OrderService;
+import com.example.util.LogUtil;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -27,6 +25,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailMapper orderDetailMapper;
     @Resource
     private ItemMapper itemMapper;
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public ResponseResult createOrder(OrderCreate orderCreate) {
@@ -87,15 +87,65 @@ public class OrderServiceImpl implements OrderService {
         return new ResponseResult(400, "查询失败");
     }
 
+    @Transactional
     @Override
-    public ResponseResult payOrder(Long id) {
-        int res = orderMapper.updateOrderStatus(id, 2);
+    public ResponseResult payOrder(OrderCreate orderCreate) {
+        Long id = orderCreate.getId();
 
-        if (res == 1) {
-            return new ResponseResult(200, "支付成功");
+        List<Long> cart_ids = orderCreate.getCart_ids();
+
+        if ( !(cart_ids == null || cart_ids.isEmpty())) {
+            // 删除购物车
+            int res = cartMapper.deleteAllCartByIds(cart_ids);
+            if (res != cart_ids.size()) {
+                throw new RuntimeException("删除购物车失败");
+            }
         }
-        return new ResponseResult(400, "支付失败");
+
+        // 查询订单
+        Order order = orderMapper.selectOrderById(id);
+        if (order == null) {
+            return new ResponseResult(400, "订单不存在");
+        }
+
+        List<OrderDetail> orderDetails = orderDetailMapper.findItemIdsByOrderId(id);
+        if (orderDetails.isEmpty()) {
+            return new ResponseResult(400, "订单详情不存在");
+        }
+
+        Item item = null;
+        for (OrderDetail orderDetail : orderDetails) {
+            // 根据item_id查找商品信息
+            item = itemMapper.selectItemById(orderDetail.getItem_id());
+            if (item == null || item.getStock() < orderDetail.getNum()) {
+                throw new RuntimeException("库存不足或商品不存在");
+            }
+            int updateStockResult = itemMapper.updateItemStock(item.getId(), orderDetail.getNum());
+            if (updateStockResult != 1) {
+                throw new RuntimeException("更新库存失败");
+            }
+        }
+
+        // 更新余额
+        User user = userMapper.findUserById(order.getUser_id());
+        if (user == null || user.getBalance() < order.getTotal_fee()) {
+            throw new RuntimeException("余额不足或用户不存在");
+        }
+
+        int updateBalanceResult = userMapper.updateBalance(order.getUser_id(), order.getTotal_fee());
+        if (updateBalanceResult != 1) {
+            throw new RuntimeException("更新余额失败");
+        }
+
+        // 更新状态
+        int updateOrderResult = orderMapper.updateOrderStatus(id, 2);
+        if (updateOrderResult != 1) {
+            throw new RuntimeException("更新订单状态失败");
+        }
+
+        return new ResponseResult(200, "支付成功");
     }
+
 
     @Override
     public ResponseResult upPayOrder(Long id) {

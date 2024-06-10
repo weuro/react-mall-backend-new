@@ -9,7 +9,7 @@ public interface OrderService {
 
     ResponseResult getOrderById(Long id);
 
-    ResponseResult payOrder(Long id);
+    ResponseResult payOrder(OrderCreate orderCreate);
 
     ResponseResult upPayOrder(Long id);
 }
