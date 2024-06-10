@@ -482,3 +482,37 @@ java.lang.NoSuchMethodError: 'com.example.model.Order com.example.model.Order.se
 2024-06-09T21:15:24.148+08:00  INFO 15884 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
 2024-06-09T21:15:45.221+08:00  INFO 15884 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-06-09T21:15:45.228+08:00  INFO 15884 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-09T21:52:37.033+08:00  INFO 21804 --- [main] com.example.ReactMallBackedApplication   : Starting ReactMallBackedApplication using Java 17 with PID 21804 (E:\MY_CACHE\react-mall-backed\target\classes started by dell in E:\MY_CACHE\react-mall-backed)
+2024-06-09T21:52:37.035+08:00  INFO 21804 --- [main] com.example.ReactMallBackedApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-09T21:52:37.939+08:00  INFO 21804 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-06-09T21:52:37.950+08:00  INFO 21804 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-09T21:52:37.950+08:00  INFO 21804 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-09T21:52:38.015+08:00  INFO 21804 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-09T21:52:38.016+08:00  INFO 21804 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 944 ms
+2024-06-09T21:52:38.605+08:00  INFO 21804 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-06-09T21:52:38.613+08:00  INFO 21804 --- [main] com.example.ReactMallBackedApplication   : Started ReactMallBackedApplication in 2.134 seconds (process running for 2.672)
+2024-06-09T21:52:49.942+08:00  INFO 21804 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-09T21:52:49.942+08:00  INFO 21804 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T21:52:49.943+08:00  INFO 21804 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-09T21:52:50.055+08:00  INFO 21804 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-09T21:52:50.283+08:00  INFO 21804 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@36a3c74f
+2024-06-09T21:52:50.287+08:00  INFO 21804 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-09T21:53:02.998+08:00  INFO 21804 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-09T21:53:03.004+08:00  INFO 21804 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-09T21:56:04.662+08:00  INFO 3260 --- [main] com.example.ReactMallBackedApplication   : Starting ReactMallBackedApplication using Java 17 with PID 3260 (E:\MY_CACHE\react-mall-backed\target\classes started by dell in E:\MY_CACHE\react-mall-backed)
+2024-06-09T21:56:04.664+08:00  INFO 3260 --- [main] com.example.ReactMallBackedApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-06-09T21:56:05.470+08:00  INFO 3260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-06-09T21:56:05.480+08:00  INFO 3260 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-09T21:56:05.480+08:00  INFO 3260 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-09T21:56:05.538+08:00  INFO 3260 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-09T21:56:05.538+08:00  INFO 3260 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 843 ms
+2024-06-09T21:56:06.045+08:00  INFO 3260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-06-09T21:56:06.052+08:00  INFO 3260 --- [main] com.example.ReactMallBackedApplication   : Started ReactMallBackedApplication in 1.828 seconds (process running for 2.313)
+2024-06-09T21:56:11.143+08:00  INFO 3260 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-09T21:56:11.143+08:00  INFO 3260 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-09T21:56:11.144+08:00  INFO 3260 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-06-09T21:56:11.188+08:00  INFO 3260 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-09T21:56:11.521+08:00  INFO 3260 --- [http-nio-8081-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5150b43
+2024-06-09T21:56:11.523+08:00  INFO 3260 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-09T21:56:37.719+08:00  INFO 3260 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-09T21:56:37.726+08:00  INFO 3260 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

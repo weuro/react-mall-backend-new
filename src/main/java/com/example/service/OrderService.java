@@ -6,4 +6,10 @@ import com.example.dto.ResponseResult;
 public interface OrderService {
 
     ResponseResult createOrder(OrderCreate orderCreate);
+
+    ResponseResult getOrderById(Long id);
+
+    ResponseResult payOrder(Long id);
+
+    ResponseResult upPayOrder(Long id);
 }
