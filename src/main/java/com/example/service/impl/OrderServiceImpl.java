@@ -207,4 +207,39 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectAllOrders();
     }
 
+    @Override
+    @Transactional
+    public ResponseResult cancelOrder(Long id) {
+        Order order = orderMapper.selectOrderById(id);
+        if (order == null) {
+            return new ResponseResult(400, "订单不存在");
+        }
+
+        if (order.getStatus() == 2) {
+            int res = orderMapper.updateOrderStatus(id, 5);
+            if (res != 1) {
+                throw new RuntimeException("取消订单失败");
+            }
+        }
+
+        int res = userMapper.updateBalance(order.getUser_id(), -order.getTotal_fee());
+        if (res != 1) {
+            throw new RuntimeException("更新余额失败");
+        }
+
+        List<OrderDetail> orderDetails = orderDetailMapper.findItemIdsByOrderId(id);
+        if (orderDetails.isEmpty()) {
+            throw new RuntimeException("订单详情不存在");
+        }
+
+        for (OrderDetail orderDetail : orderDetails) {
+            int res2 = itemMapper.updateItemStock(orderDetail.getItem_id(), -orderDetail.getNum());
+            if (res2 != 1) {
+                throw new RuntimeException("更新库存失败");
+            }
+        }
+
+        return new ResponseResult(200, "取消订单成功");
+    }
+
 }

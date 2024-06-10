@@ -22,4 +22,6 @@ public interface OrderService {
 
     List<Order> getAllOrders();
 
+    ResponseResult cancelOrder(Long id);
+
 }

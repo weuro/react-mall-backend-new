@@ -46,4 +46,9 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
+    @GetMapping("/api/order/cancel")
+    public ResponseResult cancelOrder(@RequestParam Long id) {
+        return orderService.cancelOrder(id);
+    }
+
 }
