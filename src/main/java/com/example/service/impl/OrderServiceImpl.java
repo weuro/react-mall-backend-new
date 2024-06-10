@@ -1,6 +1,8 @@
 package com.example.service.impl;
 
+import com.example.dto.CartReceive;
 import com.example.dto.OrderCreate;
+import com.example.dto.OrderPush;
 import com.example.dto.ResponseResult;
 import com.example.mapper.*;
 import com.example.model.*;
@@ -75,6 +77,49 @@ public class OrderServiceImpl implements OrderService {
 
         Map<String, Long> data = Map.of("order_id", id);
         return new ResponseResult(200, "订单创建成功", data);
+    }
+
+    @Override
+    @Transactional
+    public ResponseResult pushOrder(OrderPush orderPush) {
+        Item item = itemMapper.selectItemById(orderPush.getItem_id());
+
+        if (item.getStock() < orderPush.getNum()) {
+            throw new RuntimeException("库存不足");
+        }
+
+        int total_fee = item.getPrice() * orderPush.getNum();
+
+        long currentTimeMillis = System.currentTimeMillis();
+        int randomValue = new Random().nextInt(1000);
+        Long id = currentTimeMillis * 1000 + randomValue;
+        Order order = new Order()
+                .setId(id)
+                .setTotal_fee(total_fee)
+                .setAddress_id(orderPush.getAddress_id())
+                .setPayment_type(003)
+                .setUser_id(orderPush.getUser_id())
+                .setStatus(1);
+
+        int res = orderMapper.insertOrder(order);
+        if (res != 1) {
+            throw new RuntimeException("订单创建失败");
+        }
+
+        OrderDetail orderDetail = new OrderDetail()
+                .setOrder_id(id)
+                .setItem_id(orderPush.getItem_id())
+                .setNum(orderPush.getNum())
+                .setName(item.getName())
+                .setSpec(item.getSpec())
+                .setPrice(item.getPrice())
+                .setImage(item.getImage());
+
+        int res2 = orderDetailMapper.insertOrderDetailByOrderDetail(orderDetail);
+        if (res2 != 1) {
+            throw new RuntimeException("订单详情创建失败");
+        }
+        return new ResponseResult(200, "订单创建成功", Collections.singletonMap("order_id", id));
     }
 
     @Override

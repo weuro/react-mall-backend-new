@@ -2,10 +2,13 @@
 package com.example.model;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
+@Accessors(chain = true)
 public class OrderDetail implements Serializable {
 
     private Long id;
