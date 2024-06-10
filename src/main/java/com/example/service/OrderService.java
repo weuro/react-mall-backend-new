@@ -26,4 +26,6 @@ public interface OrderService {
 
     List<Order> getOrdersByUserId(Long userId);
 
+    boolean deleteOrder(Long id);
+
 }

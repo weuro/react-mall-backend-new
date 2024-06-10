@@ -62,4 +62,14 @@ public class OrderController {
         return new ResponseResult<>(200, orders);
     }
 
+    @DeleteMapping("/api/order/delete")
+    public ResponseResult<String> deleteOrder(@RequestParam Long id) {
+        boolean success = orderService.deleteOrder(id);
+        if (success) {
+            return new ResponseResult<>(200, "Order deleted successfully.");
+        } else {
+            return new ResponseResult<>(400, "Order deletion failed. The order might not exist.");
+        }
+    }
+
 }

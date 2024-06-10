@@ -218,4 +218,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectOrdersByUserId(userId);
     }
 
+    @Override
+    public boolean deleteOrder(Long id) {
+        int deletedRows = orderMapper.deleteOrder(id);
+        return deletedRows > 0;
+    }
+
 }
