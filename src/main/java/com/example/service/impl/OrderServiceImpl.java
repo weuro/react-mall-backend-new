@@ -48,7 +48,6 @@ public class OrderServiceImpl implements OrderService {
         for (Cart cart : carts) {
             total_fee += cart.getPrice() * cart.getNum();
         }
-
         long currentTimeMillis = System.currentTimeMillis();
         int randomValue = new Random().nextInt(1000);
         Long id = currentTimeMillis * 1000 + randomValue;

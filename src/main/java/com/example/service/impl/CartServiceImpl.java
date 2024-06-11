@@ -41,7 +41,7 @@ public class CartServiceImpl implements CartService {
                 .setNum(cartReceive.getNum())
                 .setName(item.getName())
                 .setSpec(item.getSpec())
-                .setPrice(item.getPrice() * cartReceive.getNum())
+                .setPrice(item.getPrice())
                 .setImage(item.getImage());
 
         int res = cartMapper.insertCart(cart);
